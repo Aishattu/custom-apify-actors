@@ -1,0 +1,84 @@
+{
+  "title": "GoFractional Jobs Scraper",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "startUrls": {
+      "title": "Start URLs",
+      "type": "array",
+      "description": "GoFractional job list / category / role pages, e.g. https://www.gofractional.com/jobs/fractional-cmo",
+      "editor": "requestListSources",
+      "prefill": [
+        { "url": "https://www.gofractional.com/jobs/fractional-cmo" }
+      ]
+    },
+    "maxItems": {
+      "title": "Max jobs",
+      "type": "integer",
+      "description": "Stop after this many job records across all start URLs. 0 = no limit.",
+      "editor": "number",
+      "default": 0,
+      "minimum": 0
+    },
+    "scrapeDetails": {
+      "title": "Open each job detail page",
+      "type": "boolean",
+      "description": "Visit every individual job page to add the full job description, company description, the original job-posting URL (apply link) and its source platform. Off = fast list-only pull (still includes rates, hours, company, skills, dates, summary).",
+      "editor": "checkbox",
+      "default": true
+    },
+    "followPagination": {
+      "title": "Follow pagination",
+      "type": "boolean",
+      "description": "When a list page reports more results, keep fetching ?page=2, 3, … until exhausted or Max jobs is hit.",
+      "editor": "checkbox",
+      "default": true
+    },
+    "onlyNewSinceLastRun": {
+      "title": "Only new jobs since last run",
+      "type": "boolean",
+      "description": "Remember every job seen in past runs (in a persistent store) and output only jobs not seen before. Turn this ON for a daily/scheduled run so you get just the new postings, not the same list every day.",
+      "editor": "checkbox",
+      "default": false
+    },
+    "maxAgeDays": {
+      "title": "Max age (days)",
+      "type": "integer",
+      "description": "Skip jobs published more than this many days ago. 0 = no age limit (GoFractional itself only lists the last ~30 days).",
+      "editor": "number",
+      "default": 0,
+      "minimum": 0
+    },
+    "proxyConfiguration": {
+      "title": "Proxy",
+      "type": "object",
+      "description": "gofractional.com is behind Cloudflare. Apify residential or unblocker proxy is strongly recommended.",
+      "editor": "proxy",
+      "default": { "useApifyProxy": true, "apifyProxyGroups": ["RESIDENTIAL"] }
+    },
+    "maxConcurrency": {
+      "title": "Max concurrency",
+      "type": "integer",
+      "description": "Parallel browser pages. Keep low to avoid Cloudflare rate limiting.",
+      "editor": "number",
+      "default": 2,
+      "minimum": 1,
+      "maximum": 10
+    },
+    "debug": {
+      "title": "Debug mode",
+      "type": "boolean",
+      "description": "Also push the raw Next.js pageProps payload for any page where no jobs were parsed. Useful for diagnosing selector drift.",
+      "editor": "checkbox",
+      "default": false
+    },
+    "dumpOnly": {
+      "title": "Dump only (diagnostic)",
+      "type": "boolean",
+      "description": "Do not scrape. Just fetch each start URL and push its raw Next.js pageProps + a shape outline. For debugging the parser.",
+      "editor": "checkbox",
+      "default": false
+    }
+  },
+  "required": ["startUrls"]
+}

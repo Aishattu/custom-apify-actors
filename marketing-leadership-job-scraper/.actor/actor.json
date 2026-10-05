@@ -1,0 +1,8 @@
+{
+  "actorSpecification": 1,
+  "name": "marketing-leadership-job-scraper",
+  "title": "Marketing Leadership Job Scraper",
+  "description": "Scrapes manager-to-director + CMO level marketing roles (remote) from curated job boards into one deduped dataset for Clay.",
+  "version": "0.1",
+  "input": "./input_schema.json"
+}

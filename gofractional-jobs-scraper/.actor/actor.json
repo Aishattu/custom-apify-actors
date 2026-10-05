@@ -1,0 +1,35 @@
+{
+  "actorSpecification": 1,
+  "name": "gofractional-jobs-scraper",
+  "title": "GoFractional Jobs Scraper",
+  "description": "Scrapes fractional and contract job listings from gofractional.com, past its Cloudflare challenge, into structured records.",
+  "version": "0.1",
+  "input": "./input_schema.json",
+  "dockerfile": "./Dockerfile",
+  "storages": {
+    "dataset": {
+      "actorSpecification": 1,
+      "title": "GoFractional job listings",
+      "views": {
+        "overview": {
+          "title": "Overview",
+          "transformation": {
+            "fields": [
+              "title",
+              "companyName",
+              "locationType",
+              "location",
+              "minHourlyRate",
+              "maxHourlyRate",
+              "weeklyHours",
+              "seniority",
+              "applyUrl",
+              "url"
+            ]
+          },
+          "display": { "component": "table" }
+        }
+      }
+    }
+  }
+}

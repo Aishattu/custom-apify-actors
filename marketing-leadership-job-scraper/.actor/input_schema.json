@@ -1,0 +1,78 @@
+{
+  "title": "Marketing Leadership Job Scraper input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "sources": {
+      "title": "Sources",
+      "type": "array",
+      "description": "Which boards to scrape. Each item: { name, type, startUrl, maxPages }. type is one of: workatastartup, mkt1.",
+      "editor": "json",
+      "default": [
+        { "name": "YC (Work at a Startup)", "type": "workatastartup", "startUrl": "https://www.workatastartup.com/jobs/l/marketing", "maxPages": 4 },
+        { "name": "MKT1", "type": "mkt1", "startUrl": "https://jobs.mkt1.co/", "maxPages": 1 }
+      ]
+    },
+    "includeKeywords": {
+      "title": "Include title keywords",
+      "type": "array",
+      "description": "Keep a job only if its title matches one of these (case-insensitive).",
+      "editor": "json",
+      "default": [
+        "marketing manager", "senior marketing manager", "marketing director",
+        "director of marketing", "director, marketing", "director - marketing",
+        "head of demand", "head of growth", "demand generation", "demand gen",
+        "growth marketing", "growth manager", "growth lead", "growth marketer",
+        "revenue marketing", "marketing lead", "lifecycle marketing manager",
+        "paid media", "performance marketing", "paid acquisition", "paid search",
+        "paid social", "media buyer", "digital marketing manager",
+        "cmo", "chief marketing officer"
+      ]
+    },
+    "excludeKeywords": {
+      "title": "Exclude title keywords",
+      "type": "array",
+      "description": "Drop a job if its title matches one of these (takes precedence over include).",
+      "editor": "json",
+      "default": [
+        "vp", "vice president", "svp", "evp", "head of marketing", "president",
+        "specialist", "coordinator", "assistant", "intern", "internship",
+        "associate", "content", "copywriter", "writer", "social media",
+        "community", "product marketing", "pmm", "seo", "designer", "design",
+        "analyst", "researcher", "recruiter", "sales", "founder"
+      ]
+    },
+    "remoteOnly": {
+      "title": "Remote only",
+      "type": "boolean",
+      "description": "Keep only roles that are remote or whose remote status is unclear (see keepIfRemoteUnknown). Drops clearly on-site roles.",
+      "default": true
+    },
+    "keepIfRemoteUnknown": {
+      "title": "Keep jobs when remote status is unclear",
+      "type": "boolean",
+      "description": "When remoteOnly is true and a job's location does not clearly say remote or on-site, keep it rather than drop it.",
+      "default": true
+    },
+    "datasetName": {
+      "title": "Named dataset to write into",
+      "type": "string",
+      "description": "All runs and all sources append into this one named dataset. Clay reads from here.",
+      "editor": "textfield",
+      "default": "marketing-leadership-jobs"
+    },
+    "failIfSourceEmpty": {
+      "title": "Fail the run if a source returns zero raw jobs",
+      "type": "boolean",
+      "description": "Early-warning that a board changed its layout. Filtering everything out is NOT a failure; scraping nothing is.",
+      "default": true
+    },
+    "useApifyProxy": {
+      "title": "Route requests through Apify Proxy",
+      "type": "boolean",
+      "description": "Send scraper requests through Apify Proxy so the target sites see rotating IPs instead of the datacenter IP.",
+      "default": true
+    }
+  },
+  "required": ["sources"]
+}

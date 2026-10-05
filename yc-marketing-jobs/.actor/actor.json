@@ -1,0 +1,13 @@
+{
+    "actorSpecification": 1,
+    "name": "yc-marketing-jobs",
+    "title": "YC Marketing Jobs",
+    "description": "Scrapes workatastartup.com for mid-level marketing roles (manager / lead / specialist / growth / PMM). Excludes VP / C-level / President and interns.",
+    "version": "0.1",
+    "buildTag": "latest",
+    "meta": {
+        "templateId": "python-start"
+    },
+    "dockerfile": "../Dockerfile",
+    "input": "./input_schema.json"
+}

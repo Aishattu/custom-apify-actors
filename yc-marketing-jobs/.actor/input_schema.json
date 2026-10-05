@@ -1,0 +1,49 @@
+{
+    "title": "YC Marketing Jobs input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "maxPages": {
+            "title": "Max listing pages",
+            "type": "integer",
+            "description": "How many pages of the workatastartup marketing listing to scan. The board rarely has more than one real page.",
+            "default": 3,
+            "minimum": 1,
+            "maximum": 20
+        },
+        "fetchDetail": {
+            "title": "Fetch full job detail",
+            "type": "boolean",
+            "description": "Also open each job page for full description, salary/equity, min experience, skills, and founder names + LinkedIns. Slower but much richer.",
+            "default": true
+        },
+        "includeDirector": {
+            "title": "Include Director-level titles",
+            "type": "boolean",
+            "description": "By default 'Director' titles are excluded as too senior. Turn on to keep them.",
+            "default": false
+        },
+        "activeWithinDays": {
+            "title": "Company active within N days",
+            "type": "integer",
+            "description": "Keep jobs whose company was active in the last N days. Note: workatastartup exposes this only sometimes, so it is a weak signal today.",
+            "default": 30,
+            "minimum": 1,
+            "maximum": 3650
+        },
+        "strictRecency": {
+            "title": "Strict recency",
+            "type": "boolean",
+            "description": "Also drop jobs that have no company-activity date at all. Leaving this off keeps them.",
+            "default": false
+        },
+        "limit": {
+            "title": "Max jobs",
+            "type": "integer",
+            "description": "Optional cap on the number of jobs pushed to the dataset.",
+            "minimum": 1,
+            "nullable": true
+        }
+    },
+    "required": []
+}

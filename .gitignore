@@ -1,0 +1,11 @@
+.env
+.env.*
+node_modules/
+storage/
+apify_storage/
+__pycache__/
+*.pyc
+.venv/
+venv/
+.DS_Store
+deploy.py
