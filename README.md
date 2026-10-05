@@ -1,4 +1,4 @@
-# Apify Actors: Hiring-Signal Infrastructure
+# Custom Apify Actors
 
 Job posts are one of the strongest buying signals in B2B. A company hiring a Head of Growth is about to spend on growth. A company hiring a fractional CMO is changing how it does marketing. These four custom Apify actors turn scattered job boards into clean, qualified, deduplicated datasets that feed straight into Clay for enrichment and outreach.
 
