@@ -1,7 +1,7 @@
 # GoFractional Jobs Scraper
 
-Scrapes fractional / interim / contract job listings from **gofractional.com**, past its
-Cloudflare challenge, into clean structured records.
+Scrapes fractional / interim / contract job listings from **gofractional.com**
+into clean structured records.
 
 ## Input
 
@@ -14,7 +14,7 @@ Cloudflare challenge, into clean structured records.
 | `maxAgeDays` | `0` | Skip jobs published more than N days ago. |
 | `maxItems` | `0` (all) | Stop after N job records. |
 | `maxConcurrency` | `2` | Parallel browser pages. Raise cautiously. |
-| `proxyConfiguration` | Apify **RESIDENTIAL** | Required to clear Cloudflare. `UNBLOCKER` also works. |
+| `proxyConfiguration` | Apify **RESIDENTIAL** | Recommended for reliable runs. `UNBLOCKER` also works. |
 | `dumpOnly` / `debug` | `false` | Diagnostics only. |
 
 ## Output (one item per job)
@@ -34,9 +34,7 @@ With `scrapeDetails`: `description` (markdown), `descriptionFormat`, `companyDes
 When a posting has no stored description, `description` falls back to `summary` and
 `descriptionFormat` is `"summary-only"` (flagged, never fabricated).
 
-## How it gets past Cloudflare
+## How it reads the data
 
-Headless Chrome (runs the site's JS) + Apify Residential proxy (real residential IP) +
-browser fingerprinting. No Cloudflare account involved — this just satisfies the challenge
-the site puts in front of its own pages. Data is read from the page's Next.js `__NEXT_DATA__`
-payload, not brittle DOM selectors.
+Jobs are read from the page's structured Next.js `__NEXT_DATA__` payload rather than from
+brittle DOM selectors, so the output stays accurate when the site's design changes.

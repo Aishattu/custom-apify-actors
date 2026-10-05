@@ -2,7 +2,7 @@
   "actorSpecification": 1,
   "name": "gofractional-jobs-scraper",
   "title": "GoFractional Jobs Scraper",
-  "description": "Scrapes fractional and contract job listings from gofractional.com, past its Cloudflare challenge, into structured records.",
+  "description": "Scrapes fractional and contract job listings from gofractional.com into structured records.",
   "version": "0.1",
   "input": "./input_schema.json",
   "dockerfile": "./Dockerfile",
