@@ -1,0 +1,27 @@
+{
+  "title": "LinkedIn Job Checker Input",
+  "type": "object",
+  "schemaVersion": 1,
+  "properties": {
+    "jobUrls": {
+      "title": "Job URLs",
+      "type": "array",
+      "description": "List of LinkedIn job URLs to check",
+      "editor": "stringList",
+      "prefill": ["https://www.linkedin.com/jobs/view/1234567890"]
+    },
+    "useProxy": {
+      "title": "Use Proxy",
+      "type": "boolean",
+      "description": "Use Apify proxy to avoid rate limits",
+      "default": true
+    },
+    "delayBetweenRequests": {
+      "title": "Delay Between Requests (ms)",
+      "type": "integer",
+      "description": "Milliseconds to wait between checking each job",
+      "default": 2000
+    }
+  },
+  "required": ["jobUrls"]
+}

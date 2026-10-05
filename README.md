@@ -1,14 +1,15 @@
 # Apify Actors
 
-Custom Apify actors that turn job boards into clean, structured datasets, ready to pull into Clay. Each one handles a site that doesn't offer a usable export: it finds the listings, filters them down to the roles that matter, removes duplicates, and outputs one tidy record per job.
+Custom Apify actors that turn job boards into clean, structured datasets, ready to pull into Clay. The scrapers handle sites that don't offer a usable export: they find the listings, filter them down to the roles that matter, remove duplicates, and output one tidy record per job. The LinkedIn checker then qualifies a job list by checking each posting is still open and how it's worked.
 
 | Actor | Source | What it pulls | Built with |
 |---|---|---|---|
 | [YC Marketing Jobs](yc-marketing-jobs) | workatastartup.com (Y Combinator) | Mid-level marketing roles, with optional salary, skills and founder details | Python |
 | [Marketing Leadership Job Scraper](marketing-leadership-job-scraper) | workatastartup.com + jobs.mkt1.co | Manager-to-director and CMO marketing roles, remote only, deduped across runs | JavaScript |
 | [GoFractional Jobs Scraper](gofractional-jobs-scraper) | gofractional.com | Fractional and contract roles with rates, hours and the original apply link | JavaScript, headless Chrome |
+| [LinkedIn Job Checker](linkedin-job-checker) | LinkedIn job URLs you provide | Whether each job is still open, and whether it's Remote, Hybrid or On-site | JavaScript |
 
-## What they have in common
+## What the scrapers have in common
 
 - **Clean output for Clay.** One record per job, with consistent fields, so the dataset drops straight into a Clay table.
 - **Filtering built in.** Keyword include and exclude lists, seniority rules and remote filters, all set from the actor input, with no code changes needed.

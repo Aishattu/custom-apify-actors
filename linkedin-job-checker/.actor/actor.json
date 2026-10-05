@@ -1,0 +1,8 @@
+{
+  "actorSpecification": 1,
+  "name": "linkedin-job-checker",
+  "title": "LinkedIn Job Checker",
+  "description": "Checks if LinkedIn jobs are still active and returns workplace type (Remote/Hybrid/On-site).",
+  "version": "0.1",
+  "input": "./input_schema.json"
+}
